@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Dashboard</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-2 sidebar p-3">
+  <h5 class="text-white text-center">Student</h5>
+  <a href="#">Dashboard</a>
+  <a href="/notifications">Notifications</a>
+  <a href="/logout">Logout</a>
+</div>
+
+<div class="col-md-10 p-4">
+  <div class="d-flex align-items-center justify-content-between">
+    <div>
+      <h3 class="mb-1">Welcome back</h3>
+      <div class="text-muted">Here is your learning overview for this week</div>
+    </div>
+    <a href="/notifications" class="btn btn-outline-secondary">View alerts</a>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="card p-3">
+        <div class="text-muted small">Courses enrolled</div>
+        <div class="fs-4 fw-bold">{{ courses|length }}</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-3">
+        <div class="text-muted small">Activities logged</div>
+        <div class="fs-4 fw-bold">{{ activities|length }}</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-3">
+        <div class="text-muted small">Next milestone</div>
+        <div class="fs-6 fw-bold">Portfolio case study</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12 mb-2">
+      <h5 class="fw-bold">Your courses</h5>
+      <div class="text-muted">Quick access to materials, project briefs, and quizzes</div>
+    </div>
+    {% for course in courses %}
+    <div class="col-md-4">
+      <div class="card p-3">
+        <h5>{{ course.course_name }}</h5>
+        <p class="text-muted mb-2">Material pack: {{ course.material }}</p>
+        <a href="/course/{{ course.course_name }}" class="btn btn-sm btn-primary mt-2">View</a>
+        <a href="/payment/{{ course.course_name }}" class="btn btn-sm btn-success mt-2">Enroll</a>
+      </div>
+    </div>
+    {% else %}
+    <div class="col-12">
+      <div class="card p-4">
+        <h6 class="fw-bold mb-2">No courses yet</h6>
+        <div class="text-muted">Start with the UI/UX Design Foundations track to build a portfolio quickly.</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12 mb-2">
+      <h5 class="fw-bold">Recent activity</h5>
+      <div class="text-muted">Latest submissions and quiz updates</div>
+    </div>
+    <div class="col-12">
+      <div class="card p-3">
+        <ul class="list-group list-group-flush">
+          {% for a in activities[:5] %}
+          <li class="list-group-item d-flex justify-content-between">
+            <span>{{ a.activity }}</span>
+            <span class="text-muted small">{{ a.time }}</span>
+          </li>
+          {% else %}
+          <li class="list-group-item text-muted">No activity yet. Submit your first project to get started.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

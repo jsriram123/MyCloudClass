@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-lg-6 mb-4 mb-lg-0">
+      <h2 class="fw-bold">Welcome to CloudClass</h2>
+      <p class="text-muted">
+        Access your courses, project briefs, and feedback in a single workspace.
+        Designed for modern UI/UX and product design programs.
+      </p>
+      <div class="card p-3">
+        <div class="fw-bold">What you can do today</div>
+        <div class="text-muted mt-1">Review materials, submit your latest case study, or take a quiz.</div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card p-4 shadow">
+        <h3 class="text-center mb-3">Login</h3>
+        <form method="post">
+          <input class="form-control mb-3" name="email" placeholder="Email" required>
+          <input type="password" class="form-control mb-3" name="password" placeholder="Password" required>
+          <button class="btn btn-primary w-100">Login</button>
+          <div class="text-center text-muted mt-3">
+            New here? <a href="/register">Create an account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
